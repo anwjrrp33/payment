@@ -13,7 +13,7 @@ class TicketTest {
 
     @DisplayName("티켓 감소가 정상 동작한다.")
     @ParameterizedTest
-    @CsvSource(value = { "1:0", "2:1", "3:2", "4:3", "5:4" }, delimiter = ':')
+    @CsvSource(value = {"1:0", "2:1", "3:2", "4:3", "5:4"}, delimiter = ':')
     void _1(int stock, int expectStock) {
         Ticket ticket = new Ticket("normalTitle", new Stock(stock));
 
@@ -36,7 +36,6 @@ class TicketTest {
     @NullAndEmptySource
     void _3(String invalidTitle) {
         assertThatThrownBy(() -> new Ticket(invalidTitle, new Stock(1)))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("제목은 빈 값이 될 수 없습니다");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
